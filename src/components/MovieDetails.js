@@ -1,21 +1,12 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchMovieDetails, selectMovieDetails } from "../store/moviesReducer";
+import { fetchMovieDetails, selectMovieById } from "../store/moviesReducer";
 import numberToColorHsl from "../utils/hslColor";
 
-function MovieDetails() {
-  const movieData = useSelector(selectMovieDetails);
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  useEffect(() => {
-    const getMovieDetails = async () => {
-      dispatch(fetchMovieDetails(id));
-    };
-    getMovieDetails();
-  }, [dispatch, id]);
-  // If movie component wasn't passed a movie, then
-  // we need to grab the ID of the movie from URL location.
+
+export default function MovieDetails({id}) {
+  const movieData = useSelector(selectMovieById(id));
   if (movieData)
     return (
       <div className="movieCard">
@@ -50,11 +41,3 @@ function MovieDetails() {
       </div>
     );
 }
-
-// export default MovieDetails;
-// const MovieDetails = () => {
-//   console.log(movieDetails);
-//   return <div></div>;
-// };
-
-export default MovieDetails;

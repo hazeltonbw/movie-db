@@ -1,19 +1,23 @@
 import { React } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { fetchMovieDetails } from "../store/moviesReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovieDetails, setMovieDetailsModalIsOpenById} from "../store/moviesReducer";
 
 function Movie({ movie }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const handleClick = () => {
+    dispatch(setMovieDetailsModalIsOpenById(movie.imdbID));
+    if (movie.Response) {
+      // if we have the Response property 
+      // we already gathered more information for the movie 
+      // so nothing needs to be done
+      return; 
+    }
     dispatch(fetchMovieDetails(movie.imdbID));
-    navigate(`/movie/${movie.imdbID}`, { replace: true });
   };
   if (movie.Poster !== "N/A")
     return (
       <div className="movie" onClick={handleClick}>
-        <img src={movie.Poster} alt={`${movie.Title} Poster`} />
+        <img className="movie-poster" src={movie.Poster} alt={`${movie.Title} Poster`} />
         <div className="movie-info">
           <h3 className="title">{movie.Title}</h3>
           <h4 className="year" style={{ color: "#673ab7" }}>
@@ -21,6 +25,7 @@ function Movie({ movie }) {
           </h4>
           <h5 className="type">{movie.Type}</h5>
         </div>
+        
       </div>
     );
 }
