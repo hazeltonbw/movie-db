@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieDetails, selectMovieById } from "../store/moviesReducer";
 import numberToColorHsl from "../utils/hslColor";
 
-
-export default function MovieDetails({id}) {
+export default function MovieDetails({ id }) {
   const movieData = useSelector(selectMovieById(id));
   if (movieData)
     return (
@@ -41,3 +40,4 @@ export default function MovieDetails({id}) {
       </div>
     );
 }
+

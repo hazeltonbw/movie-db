@@ -120,4 +120,3 @@ export const getModalIsOpenById = (id) => (state) => {
   if (id === "" || id === undefined) return false;
   return state.movies.movies[id].modalIsOpen;
 };
-
