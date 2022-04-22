@@ -7,7 +7,6 @@ export const getMovies = async (query) => {
   const url = `${API_ROOT}?apikey=${API_KEY}&${paramater}=${query}`;
   const response = await fetch(url);
   const json = await response.json();
-  console.log(json);
   return json.Search; // return json contains array in Search
 };
 
