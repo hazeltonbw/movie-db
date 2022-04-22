@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { getMovies, getMovieDetails } from "../api/search";
 
 const initialState = {
@@ -43,8 +43,9 @@ const moviesSlice = createSlice({
   reducers: {
     setMovieDetailsModalIsOpenById(state, action) {
       state.selectedMovieId = action.payload;
-      state.movies[action.payload].modalIsOpen = !state.movies[action.payload].modalIsOpen;
-  },
+      state.movies[action.payload].modalIsOpen =
+        !state.movies[action.payload].modalIsOpen;
+    },
     setSearchTerm(state, action) {
       state.searchTerm = action.payload;
     },
@@ -52,10 +53,20 @@ const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       if (action.payload) {
-        state.movies = action.payload.reduce((obj, item) => (obj[item.imdbID] = {...item, modalIsLoading: false, modalIsOpen: false, modalError: false}, obj) ,{});
+        state.movies = action.payload.reduce(
+          (obj, item) => (
+            (obj[item.imdbID] = {
+              ...item,
+              modalIsLoading: false,
+              modalIsOpen: false,
+              modalError: false,
+            }),
+            obj
+          ),
+          {}
+        );
         state.isLoading = false;
-      }
-      else {
+      } else {
         state.isLoading = false;
         state.error = true;
       }
@@ -82,7 +93,7 @@ const moviesSlice = createSlice({
     });
 
     builder.addCase(fetchMovieDetails.fulfilled, (state, action) => {
-      Object.assign(state.movies[action.payload.imdbID],action.payload);
+      Object.assign(state.movies[action.payload.imdbID], action.payload);
       state.movies[action.payload.imdbID].modalIsLoading = false;
     });
   },
@@ -99,13 +110,14 @@ export const {
 
 export default moviesSlice.reducer;
 
-export const selectMovieById = id => state => state.movies.movies[id];
-export const selectSelectedMovieId = state => state.movies.selectedMovieId;
+export const selectMovieById = (id) => (state) => state.movies.movies[id];
+export const selectSelectedMovieId = (state) => state.movies.selectedMovieId;
 export const selectMovies = (state) => state.movies.movies;
 export const selectSearchTerm = (state) => state.movies.searchTerm;
 export const selectIsLoading = (state) => state.movies.isLoading;
 
-export const getModalIsOpenById = id => state => {
+export const getModalIsOpenById = (id) => (state) => {
   if (id === "" || id === undefined) return false;
   return state.movies.movies[id].modalIsOpen;
-}
+};
+
