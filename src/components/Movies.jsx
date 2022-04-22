@@ -2,7 +2,6 @@ import Movie from "./Movie";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getModalIsOpenById,
-  selectMovieById,
   selectSelectedMovieId,
   setMovieDetailsModalIsOpenById,
 } from "../store/moviesReducer";
@@ -73,7 +72,7 @@ function Movies() {
           <MovieDetails id={selectedId} />
         </ReactModal>
       ) : null}
-      {Object.keys(movies).map((movie, index) => {
+      {Object.keys(movies).map((movie) => {
         return <Movie movie={movies[movie]} key={movie} />;
       })}
     </div>

@@ -1,7 +1,6 @@
-import { React, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchMovieDetails, selectMovieById } from "../store/moviesReducer";
+import { React } from "react";
+import { useSelector } from "react-redux";
+import { selectMovieById } from "../store/moviesReducer";
 import numberToColorHsl from "../utils/hslColor";
 
 export default function MovieDetails({ id }) {
