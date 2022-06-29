@@ -1,5 +1,5 @@
 import env from "react-dotenv";
-export const API_ROOT = "http://www.omdbapi.com/";
+export const API_ROOT = "https://www.omdbapi.com/";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const getMovies = async (query) => {

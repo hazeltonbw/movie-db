@@ -7,7 +7,7 @@
 	padding: 0;
 }
 
-.test {
+.hero {
 	background: rgb(2,0,36);
 	background:
     linear-gradient(
@@ -98,9 +98,9 @@ input {
 
 .movies {
 	    display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(166px, 1fr));
-    /* grid-gap: 20px; */
-    /* grid-template-rows: repeat(auto-fit, minmax(281px, 1fr)); */
+    grid-template-columns: repeat( auto-fit, minmax(15px, 100px));
+    grid-gap: 60px;
+    justify-content:center;
 		padding: 0.5rem;
     grid-row-gap: 20px;
     width: 100%;
@@ -129,7 +129,7 @@ img {
 	max-height:15rem;
 }
 .movie img {
-	max-width: 160px;
+  width: 140px;
 	height:35vh;
 	object-fit: cover;
 	border-radius: 0.5rem;
@@ -192,6 +192,11 @@ img {
 	display: flex;
 	flex-direction: column;
 	padding: 0.5rem;
+}
+
+.movieCard img {
+  width: auto;
+  max-height: 90vh;
 }
 
 .movieAttributes {

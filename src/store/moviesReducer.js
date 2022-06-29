@@ -93,6 +93,7 @@ const moviesSlice = createSlice({
     });
 
     builder.addCase(fetchMovieDetails.fulfilled, (state, action) => {
+      state.movies.movies = {};
       Object.assign(state.movies[action.payload.imdbID], action.payload);
       state.movies[action.payload.imdbID].modalIsLoading = false;
     });
@@ -118,5 +119,6 @@ export const selectIsLoading = (state) => state.movies.isLoading;
 
 export const getModalIsOpenById = (id) => (state) => {
   if (id === "" || id === undefined) return false;
+  if (!state.movies.movies[id]) return false;
   return state.movies.movies[id].modalIsOpen;
 };

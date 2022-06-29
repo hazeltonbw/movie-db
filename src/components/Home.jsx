@@ -21,6 +21,7 @@ function Home() {
     dispatch(fetchMovies(query));
     navigate(`q/${query}`);
   };
+
   return (
     <div className="container">
       <nav>

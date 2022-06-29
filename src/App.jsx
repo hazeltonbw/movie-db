@@ -12,7 +12,7 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="test">
+            <div className="hero">
               <h1
                 style={{
                   textAlign: "center",
@@ -29,11 +29,10 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="q/:id" element={<Movies />} />
-        <Route path="/movie/:id" element={<MovieDetails />}></Route>
+        <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>
     </div>
   );
 }
 
 export default App;
-

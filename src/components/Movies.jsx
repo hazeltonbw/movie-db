@@ -41,7 +41,7 @@ function Movies() {
   if (error || !movies || isEmpty(movies)) {
     return (
       <h1 style={{ textAlign: "center", color: "red" }}>
-        Unable to load movies.. try again!
+        Unable to find results for your search. Please try again
       </h1>
     );
   }
@@ -80,4 +80,3 @@ function Movies() {
 }
 
 export default Movies;
-

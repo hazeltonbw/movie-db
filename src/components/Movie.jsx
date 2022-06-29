@@ -17,7 +17,7 @@ function Movie({ movie }) {
     }
     dispatch(fetchMovieDetails(movie.imdbID));
   };
-  if (movie.Poster !== "N/A")
+  if (movie.Poster !== "N/A" && movie.Poster !== undefined)
     return (
       <div className="movie" onClick={handleClick}>
         <img

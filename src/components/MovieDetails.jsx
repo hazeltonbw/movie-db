@@ -22,10 +22,18 @@ export default function MovieDetails({ id }) {
             </h1>
           </div>
           <div className="movieAttributes">
-            <h5 className="movieAttribute">{movieData.Year}</h5>
-            <h5 className="movieAttribute">{movieData.Rated}</h5>
-            <h5 className="movieAttribute">{movieData.Runtime}</h5>
-            <h5 className="movieAttribute">{movieData.Genre}</h5>
+            {movieData.Year !== "N/A" ? (
+              <h5 className="movieAttribute">{movieData.Year}</h5>
+            ) : null}
+            {movieData.Rated !== "N/A" ? (
+              <h5 className="movieAttribute">{movieData.Rated}</h5>
+            ) : null}
+            {movieData.Runtime !== "N/A" ? (
+              <h5 className="movieAttribute">{movieData.Runtime}</h5>
+            ) : null}
+            {movieData.Genre !== "N/A" ? (
+              <h5 className="movieAttribute">{movieData.Genre}</h5>
+            ) : null}
           </div>
           <h3>Plot</h3>
           <p className="moviePlot">{movieData.Plot}</p>
