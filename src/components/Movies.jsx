@@ -13,7 +13,7 @@ import isEmpty from "lodash.isempty";
 
 const modalStyles = {
   overlay: {
-    height: "min-content",
+    height: "100%",
   },
   content: {
     display: "flex",
